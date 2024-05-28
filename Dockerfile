@@ -1,4 +1,4 @@
-FROM ruby:2.6.10
+FROM ruby:3.1.0
 
 RUN mkdir /flexcar-challenge
 WORKDIR /flexcar-challenge
