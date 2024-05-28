@@ -57,8 +57,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_28_115945) do
     t.decimal "price"
     t.decimal "weight"
     t.integer "quantity"
-    t.integer "category_id", null: false
-    t.integer "brand_id", null: false
+    t.integer "category_id"
+    t.integer "brand_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["brand_id"], name: "index_items_on_brand_id"
