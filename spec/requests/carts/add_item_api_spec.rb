@@ -41,7 +41,7 @@ RSpec.describe 'Add Item to Cart API', type: :request do
                             category: category_skincare, id: 11)
       item_color_palette = create(:item, name: 'Color Palette', price: 2000.0, stock_balance: 2, brand: brand_lakme,
                                   category: category_skincare, id: 12)
-      create(:item, name: 'Banana Chips', price: 10.0, selling_unit: :weight, stock_balance: 200, id: 13)
+      item_banana_chips = create(:item, name: 'Banana Chips', price: 10.0, selling_unit: :weight, stock_balance: 1200, id: 13)
       create(:item, name: 'Mango Candy', price: 20.0, selling_unit: :weight, stock_balance: 1000, id: 14)
 
       # Creating Promotion Types
@@ -115,7 +115,7 @@ RSpec.describe 'Add Item to Cart API', type: :request do
         discount_percentage: 20,
         start_time: Time.now,
         end_time: Time.now + 24.hours,
-        item: item_cleanser,
+        item: item_banana_chips,
         id: 1
       )
     end
@@ -314,6 +314,88 @@ RSpec.describe 'Add Item to Cart API', type: :request do
                                           'discounted_cost' => '4560.0',
                                           'savings' => '240.0',
                                           'item_id' => 2, 'quantity' => 4
+                                        }]
+                           })
+      end
+    end
+
+    context "Various Promotion Discounts Applied" do
+      it 'adds new item to cart, applies promotion flat_fee (100 off) and shows discount ' do
+        # Trigger API call
+        headers = { 'Content-Type' => 'application/json' }
+        payload = { 'item_id' => 10, 'quantity' => 2 }
+        post '/cart/add?user_id=1234', params: payload.to_json, headers: headers
+
+        # asserting that response status is 200
+        expect(response.status).to eq(200)
+
+        # asserting that response body is as expected
+        body = response_body
+        expect(body).to eq({
+                             'cart' => [{ 'actual_cost' => '1000.0',
+                                          'discounted_cost' => '800.0',
+                                          'savings' => '200.0',
+                                          'item_id' => 10, 'quantity' => 2
+                                        }]
+                           })
+      end
+
+      it 'adds new item to cart, applies percentage promotion (5% off) and shows discount ' do
+        # Trigger API call
+        headers = { 'Content-Type' => 'application/json' }
+        payload = { 'item_id' => 4, 'quantity' => 1 }
+        post '/cart/add?user_id=1234', params: payload.to_json, headers: headers
+
+        # asserting that response status is 200
+        expect(response.status).to eq(200)
+
+        # asserting that response body is as expected
+        body = response_body
+        expect(body).to eq({
+                             'cart' => [{ 'actual_cost' => '6500.0',
+                                          'discounted_cost' => '6175.0',
+                                          'savings' => '325.0',
+                                          'item_id' => 4, 'quantity' => 1
+                                        }]
+                           })
+      end
+
+      it 'adds new item to cart, applies buy_get promotion (buy 1 get 1) and shows discount ' do
+        # Trigger API call
+        headers = { 'Content-Type' => 'application/json' }
+        payload = { 'item_id' => 12, 'quantity' => 2 }
+        post '/cart/add?user_id=1234', params: payload.to_json, headers: headers
+
+        # asserting that response status is 200
+        expect(response.status).to eq(200)
+
+        # asserting that response body is as expected
+        body = response_body
+        expect(body).to eq({
+                             'cart' => [{ 'actual_cost' => '4000.0',
+                                          'discounted_cost' => '2000.0',
+                                          'savings' => '2000.0',
+                                          'item_id' => 12, 'quantity' => 2
+                                        }]
+                           })
+      end
+
+      it 'adds new item to cart, applies weight_threshold promotion (buy 1000 gm or more weight and get 20% off) and shows discount ' do
+        # Trigger API call
+        headers = { 'Content-Type' => 'application/json' }
+        payload = { 'item_id' => 13, 'quantity' => 1150 }
+        post '/cart/add?user_id=1234', params: payload.to_json, headers: headers
+
+        # asserting that response status is 200
+        expect(response.status).to eq(200)
+
+        # asserting that response body is as expected
+        body = response_body
+        expect(body).to eq({
+                             'cart' => [{ 'actual_cost' => '11500.0',
+                                          'discounted_cost' => '9200.0',
+                                          'savings' => '2300.0',
+                                          'item_id' => 13, 'quantity' => 1150
                                         }]
                            })
       end
