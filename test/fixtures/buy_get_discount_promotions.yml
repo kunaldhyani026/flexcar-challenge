@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  promotion: one
+  buy_quantity: 1
+  get_quantity: 1
+  start_time: 2024-05-28 11:59:19
+  end_time: 2024-05-28 11:59:19
+  item: one
+  category: one
+
+two:
+  promotion: two
+  buy_quantity: 1
+  get_quantity: 1
+  start_time: 2024-05-28 11:59:19
+  end_time: 2024-05-28 11:59:19
+  item: two
+  category: two

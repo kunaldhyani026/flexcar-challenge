@@ -6,7 +6,7 @@ require 'ecommerce/promotion_handler'
 class PromotionsController < ApplicationController
   before_action :validate_params
 
-  # Just adding code structure for understanding, as implementation is out of scope for current timelines
+  # Just adding code structure for understanding, as implementation is out of scope for current timelines of 48 hours
 
   def add
     # to-do [OUT OF SCOPE for current assignment timelines and requirement]

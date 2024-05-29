@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  promotion: one
+  discount_percentage: 9.99
+  start_time: 2024-05-28 11:58:56
+  end_time: 2024-05-28 11:58:56
+  item: one
+  category: one
+
+two:
+  promotion: two
+  discount_percentage: 9.99
+  start_time: 2024-05-28 11:58:56
+  end_time: 2024-05-28 11:58:56
+  item: two
+  category: two

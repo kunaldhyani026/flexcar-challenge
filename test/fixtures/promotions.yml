@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  promotion_type: MyString
+  value: 9.99
+  criteria: MyText
+  start_time: 2024-05-28 11:12:37
+  end_time: 2024-05-28 11:12:37
+
+two:
+  promotion_type: MyString
+  value: 9.99
+  criteria: MyText
+  start_time: 2024-05-28 11:12:37
+  end_time: 2024-05-28 11:12:37

@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  promotion: one
+  weight_threshold: 9.99
+  discount_percentage: 9.99
+  start_time: 2024-05-28 11:59:45
+  end_time: 2024-05-28 11:59:45
+  item: one
+  category: one
+
+two:
+  promotion: two
+  weight_threshold: 9.99
+  discount_percentage: 9.99
+  start_time: 2024-05-28 11:59:45
+  end_time: 2024-05-28 11:59:45
+  item: two
+  category: two

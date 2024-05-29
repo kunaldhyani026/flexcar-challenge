@@ -8,7 +8,7 @@ class ApplicationController < ActionController::API
   # In production systems, user_id should be decoded from the auth token and
   # then user_id should be used ahead for maintaining user's cart states.
   def authenticate_user
-    render_error('unauthorized_user', 'invalid user_id ', 401) unless params[:user_id].present?
+    render_error('unauthorized_user', 'invalid user_id', 401) unless params[:user_id].present?
   end
 
   # Method to render_error to be used across different controllers
