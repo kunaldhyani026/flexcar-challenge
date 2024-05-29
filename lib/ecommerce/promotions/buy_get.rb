@@ -5,6 +5,7 @@ require_relative 'abstract_promotion'
 module Ecommerce
   module Promotions
     # Concrete BuyGet Promotion class implementing AbstractPromotion interface
+    # Anything specific to buyget promotions, this class will handle
     class BuyGet < AbstractPromotion
 
       # calculates maximum active buy_get discount for an item
@@ -19,6 +20,17 @@ module Ecommerce
         end.max
         max_discount.present? ? max_discount : 0
       end
+
+      # Implementing save and update method for understanding the code structure
+      # just adding structure here, actual code is out of scope for current assignment timelines
+
+      # def save
+      #   to-do
+      # end
+
+      # def update
+      #   to-do
+      # end
     end
   end
 end

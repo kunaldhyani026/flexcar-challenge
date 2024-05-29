@@ -6,6 +6,10 @@ module Ecommerce
     # So If any new promotion comes up, it only need to implement these methods and rest of system will work.
     class AbstractPromotion
 
+      def initialize(params)
+        @params = params
+      end
+
       # Create and save new promotion discount entry
       def save
         raise NotImplementedError, "#{self.class} has not implemented method '#{__method__}'"

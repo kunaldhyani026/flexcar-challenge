@@ -10,10 +10,10 @@ module Ecommerce
   # It includes methods to calculate the maximum discount for the cart items based on all active promotions.
   class PromotionHandler
     PROMOTION_FACTORY = {
-      'flat_fee' => Promotions::FlatFee.new,
-      'percentage' => Promotions::Percentage.new,
-      'buy_get' => Promotions::BuyGet.new,
-      'weight_threshold' => Promotions::WeightThreshold.new
+      'flat_fee' => Promotions::FlatFee,
+      'percentage' => Promotions::Percentage,
+      'buy_get' => Promotions::BuyGet,
+      'weight_threshold' => Promotions::WeightThreshold
     }.freeze
 
     def initialize(cart_name)
@@ -32,13 +32,28 @@ module Ecommerce
       current_cart
     end
 
+    # Future needs - Promotion handler can implement create_promotion, update_promotion methods which will call
+    # their respective promotion class to save or update any discount promotion
+    # just adding structure here, actual code is out of scope for current assignment timelines
+
+    # def create_promotion(params)
+    #   type = params[:promotion_type]
+    #   PROMOTION_FACTORY[type].new(params).save
+    # end
+
+
+    # def update_promotion(params)
+    #   type = params[:promotion_type]
+    #   PROMOTION_FACTORY[type].new(params).update
+    # end
+
     private
 
     # Selects maximum discount promotion for an item
     def find_best_discount(item, quantity)
       discount = 0
       PROMOTION_FACTORY.each do |_promotion_type, klass|
-        discount = [discount, klass.max_discount(item, quantity)].max
+        discount = [discount, klass.new({}).max_discount(item, quantity)].max
       end
       discount * quantity
     end
