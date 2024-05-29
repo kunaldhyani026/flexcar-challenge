@@ -115,7 +115,7 @@ Make sure you have Docker installed on your system. You can download and install
 - For simplicity, currently only check is to see if user_id is present in payload/headers or not. In production systems, user_id should be decoded from the auth token and
   then this user_id should be used ahead for maintaining user's cart states.
 - We have used Rails memory_store cache, to keep the state of the cart per user_id. In production systems, some persistent memory store with time to live can be used.
-- As requested, we have exposed three APIs for cart actions - add, remove, view. However, we have written skeleton code (design, classes, modules, controllers & routes) for promotions action and inventory action, i.e., items - add, update, etc | promotions - add, update etc.
+- As requested, we have exposed three APIs for cart actions - add, remove, view. We have also written skeleton code (design, classes, modules, controllers & routes) for promotions action and inventory action, i.e., items - add, update, etc | promotions - add, update etc. due to timelines of 48 hours.
 - The skeleton code is can be completed to make items inventory APIs and promotion APIs up and running.
 - We have **validate_params** method which validates the input  pyaoad params first before proceeding further.
 - Seed data for development is populated via db/seeds.rb
