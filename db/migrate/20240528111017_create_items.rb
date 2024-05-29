@@ -4,8 +4,8 @@ class CreateItems < ActiveRecord::Migration[7.0]
       t.integer :id, primary_key: true, auto_increment: true
       t.string :name
       t.decimal :price
-      t.decimal :weight
-      t.integer :quantity
+      t.string :selling_unit, default: 'quantity', null: false
+      t.integer :stock_balance
       t.references :category, null: true, foreign_key: true
       t.references :brand, null: true, foreign_key: true
 

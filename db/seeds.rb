@@ -20,32 +20,32 @@ brand_lakme = Brand.create!(name: 'Lakme')
 brand_cetaphil = Brand.create!(name: 'Cetaphil')
 
 # creating items
-Item.create!(name: 'Bathroom Slipper', price: 540.0, weight: 85, quantity: 4, brand_id: brand_nike.id,
+Item.create!(name: 'Bathroom Slipper', price: 540.0, stock_balance: 4, brand_id: brand_nike.id,
              category_id: category_footwear.id)
-Item.create!(name: 'Sports Shoes', price: 1200.0, weight: 185, quantity: 2, brand_id: brand_nike.id,
+Item.create!(name: 'Sports Shoes', price: 1200.0, stock_balance: 2, brand_id: brand_nike.id,
              category_id: category_footwear.id)
-Item.create!(name: 'Room Slipper', price: 800.0, weight: 20, quantity: 5, brand_id: brand_puma.id,
+Item.create!(name: 'Room Slipper', price: 800.0, stock_balance: 5, brand_id: brand_puma.id,
              category_id: category_footwear.id)
-Item.create!(name: 'RXS Sneaker', price: 6500.0, weight: 255, quantity: 2, brand_id: brand_puma.id,
+Item.create!(name: 'RXS Sneaker', price: 6500.0, stock_balance: 2, brand_id: brand_puma.id,
              category_id: category_footwear.id)
-Item.create!(name: 'Smartphone', price: 15_000.0, weight: 155, quantity: 10, brand_id: brand_samsung.id,
+Item.create!(name: 'Smartphone', price: 15_000.0, stock_balance: 10, brand_id: brand_samsung.id,
              category_id: category_electronics.id)
-item_smartwatch = Item.create!(name: 'Smartwatch', price: 6000.0, weight: 15, quantity: 1, brand_id: brand_samsung.id,
+item_smartwatch = Item.create!(name: 'Smartwatch', price: 6000.0, stock_balance: 1, brand_id: brand_samsung.id,
                                category_id: category_electronics.id)
-Item.create!(name: 'Front Load Washing Machine', price: 16_500.0, weight: 800, quantity: 1, brand_id: brand_samsung.id,
+Item.create!(name: 'Front Load Washing Machine', price: 16_500.0, stock_balance: 1, brand_id: brand_samsung.id,
              category_id: category_electronics.id)
-Item.create!(name: 'iPhone 14', price: 80_000.0, weight: 200, quantity: 5, brand_id: brand_apple.id,
+Item.create!(name: 'iPhone 14', price: 80_000.0, stock_balance: 5, brand_id: brand_apple.id,
              category_id: category_electronics.id)
-item_cleanser = Item.create!(name: 'Face Cleanser', price: 400.0, weight: 1200, quantity: 2, brand_id: brand_cetaphil.id,
+item_cleanser = Item.create!(name: 'Face Cleanser', price: 400.0, stock_balance: 2, brand_id: brand_cetaphil.id,
                              category_id: category_skincare.id)
-item_moisturiser = Item.create!(name: 'Body Moisturiser', price: 500.0, weight: 200, quantity: 6, brand_id: brand_cetaphil.id,
+item_moisturiser = Item.create!(name: 'Body Moisturiser', price: 500.0, stock_balance: 6, brand_id: brand_cetaphil.id,
                                 category_id: category_skincare.id)
-item_perfume = Item.create!(name: 'Perfume', price: 600.0, weight: 200, quantity: 1, brand_id: brand_cetaphil.id,
+item_perfume = Item.create!(name: 'Perfume', price: 600.0, stock_balance: 1, brand_id: brand_cetaphil.id,
              category_id: category_skincare.id)
-item_color_palette = Item.create!(name: 'Color Palette', price: 2000.0, weight: 400, quantity: 2, brand_id: brand_lakme.id,
+item_color_palette = Item.create!(name: 'Color Palette', price: 2000.0, stock_balance: 2, brand_id: brand_lakme.id,
                                   category_id: category_skincare.id)
-Item.create!(name: 'Banana Chips', price: 10.0, weight: 250, quantity: 2)
-Item.create!(name: 'Mango Candy', price: 20.0, weight: 200, quantity: 1)
+Item.create!(name: 'Banana Chips', price: 10.0, selling_unit: :weight, stock_balance: 200)
+Item.create!(name: 'Mango Candy', price: 20.0, selling_unit: :weight, stock_balance: 1000)
 
 # Creating Promotion Types
 flat_fee_promo = Promotion.create!(name: 'Flat Fee Discount',

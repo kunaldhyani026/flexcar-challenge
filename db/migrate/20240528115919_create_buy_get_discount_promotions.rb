@@ -3,9 +3,9 @@ class CreateBuyGetDiscountPromotions < ActiveRecord::Migration[7.0]
     create_table :buy_get_discount_promotions, id: false do |t|
       t.integer :id, primary_key: true, auto_increment: true
       t.references :promotion, null: false, foreign_key: true
-      t.integer :buy_quantity
-      t.integer :get_quantity
-      t.datetime :start_time
+      t.integer :buy_quantity, null: false
+      t.integer :get_quantity, null: false
+      t.datetime :start_time, null: false
       t.datetime :end_time
       t.references :item, null: true, foreign_key: true
       t.references :category, null: true, foreign_key: true

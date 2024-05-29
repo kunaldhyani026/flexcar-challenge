@@ -3,4 +3,10 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+  resource :cart, only: [] do
+    # Define a collection route for adding and removing item(s) to the cart
+    post :add, :remove, on: :collection
+    # Route to view the cart
+    get :show
+  end
 end

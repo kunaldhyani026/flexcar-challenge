@@ -19,9 +19,9 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_28_115945) do
 
   create_table "buy_get_discount_promotions", force: :cascade do |t|
     t.integer "promotion_id", null: false
-    t.integer "buy_quantity"
-    t.integer "get_quantity"
-    t.datetime "start_time"
+    t.integer "buy_quantity", null: false
+    t.integer "get_quantity", null: false
+    t.datetime "start_time", null: false
     t.datetime "end_time"
     t.integer "item_id"
     t.integer "category_id"
@@ -40,8 +40,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_28_115945) do
 
   create_table "flat_fee_discount_promotions", force: :cascade do |t|
     t.integer "promotion_id", null: false
-    t.decimal "discount_amount"
-    t.datetime "start_time"
+    t.decimal "discount_amount", null: false
+    t.datetime "start_time", null: false
     t.datetime "end_time"
     t.integer "item_id"
     t.integer "category_id"
@@ -55,8 +55,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_28_115945) do
   create_table "items", force: :cascade do |t|
     t.string "name"
     t.decimal "price"
-    t.decimal "weight"
-    t.integer "quantity"
+    t.string "selling_unit", default: "quantity", null: false
+    t.integer "stock_balance"
     t.integer "category_id"
     t.integer "brand_id"
     t.datetime "created_at", null: false
@@ -67,8 +67,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_28_115945) do
 
   create_table "percentage_discount_promotions", force: :cascade do |t|
     t.integer "promotion_id", null: false
-    t.decimal "discount_percentage"
-    t.datetime "start_time"
+    t.decimal "discount_percentage", null: false
+    t.datetime "start_time", null: false
     t.datetime "end_time"
     t.integer "item_id"
     t.integer "category_id"
@@ -88,9 +88,9 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_28_115945) do
 
   create_table "weight_threshold_discount_promotions", force: :cascade do |t|
     t.integer "promotion_id", null: false
-    t.decimal "weight_threshold"
-    t.decimal "discount_percentage"
-    t.datetime "start_time"
+    t.decimal "weight_threshold", null: false
+    t.decimal "discount_percentage", null: false
+    t.datetime "start_time", null: false
     t.datetime "end_time"
     t.integer "item_id"
     t.integer "category_id"
