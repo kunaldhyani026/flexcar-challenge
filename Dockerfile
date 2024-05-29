@@ -1,30 +1,27 @@
 FROM ruby:3.1.0
 
+# Create working directory in the container
 RUN mkdir /flexcar-challenge
+
+# Set the working directory in the container
 WORKDIR /flexcar-challenge
 
+# Get update
 RUN apt-get update
 
-# BUILD DOCKER IMAGE flexcar-challenge
-# docker build -t 'flexcar-challenge' -f /path/to/local/code/Dockerfile .
+# Copy Gemfile and Gemfile.lock into the container
+COPY Gemfile Gemfile.lock ./
 
-# BUILD CONTAINER flexcar-challenge
-# docker run --expose 3000 -p 3000:3000 --name flexcar-challenge -it -v /path/to/local/code:/flexcar-challenge -d flexcar-challenge
+# Install dependencies using bundler
+RUN bundle install
 
-# START CONTAINER flexcar-challenge
-# docker start flexcar-challenge
+# Copy the rest of the application code into the container
+COPY . .
 
-# LOG IN TO CONTAINER flexcar-challenge
-# docker exec -it flexcar-challenge bash
+# Expose port 3000 to the outside world
+EXPOSE 3000
 
-# RUN FOLLOWING COMMANDS
-#   - bundle install
-#   - rails db:migrate RAILS_ENV=development
-#   - apt-get -y install --no-install-recommends sqlite3 //optional but helps in visualizing db data
-#   - rails db:seed // optional, to populate developement data
-#   - rspec // optional, to check that all test cases are passing
-
-# RUN rails server
-# rails s -b 0.0.0.0 -p 3000
+# Command to start the Rails server
+CMD ["rails", "server", "-b", "0.0.0.0", "-p", "3000"]
 
 # APIs accessible at: http://localhost:3000/
